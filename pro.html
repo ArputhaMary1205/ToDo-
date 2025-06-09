@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <title>To-Do List</title>
+  <style>
+    :root {
+      --bg-color:light purple;
+      --container-color: #ffffff;
+      --text-color: #111827;
+      --input-bg: #ffffff;
+      --button-bg: #6366f1;
+      --task-bg: #f9fafb;
+    }
+
+    body.dark {
+      --bg-color: red;
+      --container-color: #111827;
+      --text-color: #f9fafb;
+      --input-bg: #374151;
+      --button-bg: #8b5cf6;
+      --task-bg: #1e293b;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family:'Roboto', sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      transition: all 0.3s ease;
+    }
+
+    .todo-container { 
+      
+      background:brown;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      width: 90%;
+      max-width: 500px;
+      transition: all 0.3s ease;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      font-size: 1.8rem;
+    }
+
+    .input-section {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .input-section input {
+      flex: 1;
+      padding: 0.75rem;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      background: var(--input-bg);
+      color: var(--text-color);
+      font-size: 1rem;
+    }
+
+    .input-section button {
+      padding: 0.75rem 1rem;
+      background: var(--button-bg);
+      color:blue;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+
+    .todo-list {
+      list-style: none;
+    }
+
+    .todo-list li {
+      margin-bottom: 1rem;
+      padding: 0.75rem;
+      background: var(--task-bg);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      transition: background 0.3s ease;
+    }
+
+    .todo-list li:hover {
+      background: #e5e7eb;
+    }
+
+    body.dark .todo-list li:hover {
+      background: black;
+    }
+
+    .todo-list input[type="checkbox"] {
+      margin-right: 1rem;
+      transform: scale(1.2);
+    }
+
+    .task {
+      font-size: 1rem;
+    }
+
+    
+    .theme-toggle {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+    }
+
+    .theme-toggle label {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .theme-toggle input {
+      display: none;
+    }
+
+    .slider {
+      width: 50px;
+      height: 25px;
+      background: #ccc;
+      border-radius: 50px;
+      position: relative;
+      transition: background 0.3s;
+    }
+
+    .slider::before {
+      content: "";
+      width: 20px;
+      height: 20px;
+      background: black;
+      border-radius: 50%;
+      position: absolute;
+      top: 2.5px;
+      left: 3px;
+      transition: transform 0.3s ease;
+    }
+
+    input:checked + .slider {
+      background:red;
+    }
+
+    input:checked + .slider::before {
+      transform: translateX(25px);
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="theme-toggle">
+    <label>
+      <input type="checkbox" onchange="document.body.classList.toggle('dark')">
+      <span class="slider"></span>
+    </label>
+  </div>
+
+  
+  <div class="todo-container">
+    <h1>My act</h1>
+
+    <div class="input-section">
+      <input type="text" placeholder="Add a new task..." readonly,write only />
+      <button>Add</button>
+    </div>
+
+    <ul class="todo-list">
+      <li>
+        <label>
+          <input type="checkbox" />
+          <span class="task">music</span>
+        </label>
+      </li>
+      <li>
+        <label>
+          <input type="checkbox" />
+          <span class="task">Workout</span>
+        </label>
+      </li>
+      <li>
+        <label>
+          <input type="checkbox" />
+          <span class="task">dance</span>
+        </label>
+      </li>
+    </ul>
+  </div>
+</body>
+</html>
